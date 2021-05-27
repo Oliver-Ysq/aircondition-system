@@ -1,0 +1,26 @@
+.p-choose-charactor-layout {
+    background: rgb(240, 242, 245);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.p-choose-charactor-layout-title {
+    font-size: 28px;
+}
+
+.p-choose-charactor-layout-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.p-choose-charactor-layout button {
+    height: 15vw;
+    width: 15vw;
+    font-size: 24px;
+}
