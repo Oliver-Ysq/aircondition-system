@@ -1,0 +1,17 @@
+.table {
+    margin: 16px;
+}
+.left {
+    height: 100%;
+    width: 50%;
+    float: left;
+}
+.right {
+    height: 100%;
+    width: 50%;
+    flex: 1;
+    float: left;
+}
+.ant-drawer-content-wrapper {
+    height: 80vh!important;
+}

@@ -7,22 +7,18 @@ class MenuItem {
 
 export const homepageOptions = {
     user: [
-        new MenuItem("控制面板", "user-controller"),
-        new MenuItem("房间状态", "user-room-state"),
+        new MenuItem("房间面板", "user-controller"),
     ],
     frontEnd: [
-        new MenuItem("账号管理", "front-end-account-management"),
         new MenuItem("入住办理", "front-end-checkin"),
-        new MenuItem("退房详单", "front-end-checkout-detail"),
+        new MenuItem("入住详情", "front-end-check-info"),
     ],
     administrator: [
-        new MenuItem("账号管理", "administrator-account-management"),
         new MenuItem("设定缺省值", "administrator-default-settings"),
         new MenuItem("查询房间数据", "administrator-get-room-info"),
     ],
     hotelManager: [
-        new MenuItem("账号管理", "hotel-manager-account-management"),
-        new MenuItem("生成日报表", "hotel-manager-get-daily-report"),
+        new MenuItem("生成报表", "hotel-manager-get-daily-report"),
     ],
 };
 
@@ -34,7 +30,7 @@ export const charactorMap = {
 };
 
 export const CHARACTOR_ENUM = {
-    UNKNOWN: null,
+    UNKNOWN: "null",
     USER: "user",
     ADMINISTRATOR: "administrator",
     FRONTEND: "frontEnd",

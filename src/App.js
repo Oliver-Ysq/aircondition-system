@@ -8,10 +8,11 @@ import Main from "./components/Main/index";
 import ChooseCharactor from "./pages/ChooseCharactor/index";
 import { AccountStore } from "./store/store";
 import { CHARACTOR_ENUM } from "./helper/const";
+import { initUtils } from "./helper/util";
 
 const App = observer((props) => {
-    const { charactor } = AccountStore;
-    console.log(charactor);
+    const { initCharactor } = AccountStore;
+    initUtils();
     const keyword =
         props.location.pathname === "/"
             ? "welcome"
@@ -19,12 +20,12 @@ const App = observer((props) => {
 
     return (
         <>
-            {charactor === CHARACTOR_ENUM.UNKNOWN ? (
+            {initCharactor === CHARACTOR_ENUM.UNKNOWN ? (
                 <ChooseCharactor />
             ) : (
                 <Layout className="c-layout">
-                    <MySider keyword={keyword} charactor={charactor} />
-                    <Main charactor={charactor} />
+                    <MySider keyword={keyword} charactor={initCharactor} />
+                    <Main charactor={initCharactor} />
                 </Layout>
             )}
         </>

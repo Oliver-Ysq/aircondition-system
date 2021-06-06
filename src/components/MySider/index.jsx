@@ -6,6 +6,7 @@ import { homepageOptions } from "../../helper/const";
 const { Sider } = Layout;
 const MySider = (props) => {
     const { keyword, charactor } = props;
+    console.log(charactor)
     return (
         <Sider trigger={null} collapsible={false}>
             <div className="c-layout-logo"> 空调管理系统 </div>
