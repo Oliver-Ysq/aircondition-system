@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, Result, notification } from "antd";
+import { Form, Input, Button, notification } from "antd";
 import "./style.css";
 import Qs from "qs";
 import instance from "../../../axios";
@@ -81,12 +81,12 @@ const Checkin = (props) => {
             </Form.Item>
 
             <Form.Item
-                label="用户手机号"
+                label="用户密码"
                 name="phonenumber"
                 rules={[
                     {
                         required: true,
-                        message: "请输入手机号！",
+                        message: "请输入密码！",
                     },
                 ]}
             >

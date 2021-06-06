@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import instance from "../../../axios";
-import { CheckInfo } from "../../../axios/interface";
-import { Table, Button, Form, Input, Menu } from "antd";
+import { ChangeSwitch, CheckInfo, CheckSwitch } from "../../../axios/interface";
+import { Table, Button, Form, Input, Menu, Switch, notification } from "antd";
 import Qs from "qs";
 import { AccountStore, AdminStore } from "../../../store/store";
 import { observer } from "mobx-react";
@@ -12,7 +12,7 @@ let checkInterval = null;
 
 const Airs = observer(() => {
     const [fresh, setFresh] = useState(0);
-    const [current, setCurrent] = useState("single");
+    const [current, setCurrent] = useState("switch");
     const [roomId, setRoomId] = useState(0);
 
     useEffect(() => {
@@ -35,6 +35,13 @@ const Airs = observer(() => {
         return () => {
             clearInterval(checkInterval);
         };
+    }, [fresh]);
+
+    useEffect(() => {
+        instance.post(CheckSwitch).then((res) => {
+            console.log(res.data.running);
+            AdminStore.setMainSwitch(res.data.running);
+        });
     }, []);
     const [form] = Form.useForm();
 
@@ -75,15 +82,41 @@ const Airs = observer(() => {
             key: "total_cost",
         },
     ];
-    const onFinish = (values) => {
-        console.log("Finish:", values);
-    };
     const handleCheckRoom = (values) => {
         console.log(values);
         setRoomId(values.roomid);
     };
     const handleChangeTab = (e) => {
         setCurrent(e.key);
+    };
+
+    const handleSwitchChange = async (e) => {
+        console.log(e);
+        const res = await instance.post(
+            ChangeSwitch,
+            Qs.stringify({
+                mainswitch: e ? "on" : "off",
+            })
+        );
+        console.log(res);
+        if (res.data.data.running == e) {
+            AdminStore.setMainSwitch(e);
+        } else {
+            notification.error({
+                title: "总闸开关操作失败",
+                description: "请检查是否设定缺省值",
+            });
+        }
+    };
+
+    const renderSwitch = () => {
+        return (
+            <Switch
+                style={{ margin: 32 }}
+                onChange={handleSwitchChange}
+                checked={AdminStore.mainSwitch}
+            />
+        );
     };
 
     const renderForm = () => (
@@ -132,10 +165,13 @@ const Airs = observer(() => {
                 selectedKeys={[current]}
                 mode="horizontal"
             >
+                <Menu.Item key="switch">总闸开关</Menu.Item>
                 <Menu.Item key="single">查询单个房间</Menu.Item>
                 <Menu.Item key="all">房间情况总览</Menu.Item>
             </Menu>
-            {current === "single" ? (
+            {current === "switch" ? (
+                renderSwitch()
+            ) : current === "single" ? (
                 renderForm()
             ) : (
                 <Table

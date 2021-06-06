@@ -6,20 +6,16 @@ class MenuItem {
 }
 
 export const homepageOptions = {
-    user: [
-        new MenuItem("房间面板", "user-controller"),
-    ],
+    user: [new MenuItem("房间面板", "user-controller")],
     frontEnd: [
         new MenuItem("入住办理", "front-end-checkin"),
         new MenuItem("入住详情", "front-end-check-info"),
     ],
     administrator: [
         new MenuItem("设定缺省值", "administrator-default-settings"),
-        new MenuItem("查询房间数据", "administrator-get-room-info"),
+        new MenuItem("房间操作", "administrator-get-room-info"),
     ],
-    hotelManager: [
-        new MenuItem("生成报表", "hotel-manager-get-daily-report"),
-    ],
+    hotelManager: [new MenuItem("生成报表", "hotel-manager-get-daily-report")],
 };
 
 export const charactorMap = {

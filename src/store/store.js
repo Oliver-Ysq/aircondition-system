@@ -117,6 +117,11 @@ export const AdminStore = makeAutoObservable({
         this.airList = list;
         refresh();
     },
+
+    mainSwitch: false,
+    setMainSwitch(flg) {
+        this.mainSwitch = flg;
+    },
 });
 
 export const ManagerStore = makeAutoObservable({

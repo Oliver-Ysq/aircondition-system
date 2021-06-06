@@ -19,5 +19,7 @@ export const NowCustomers = "/front_desk_318c_hotel/nowcustomers";
 //admin
 export const SetParams = "/air_administrator_318c_hotel/setdefaultparams";
 export const CheckInfo = "/air_administrator_318c_hotel/checkInfo";
+export const CheckSwitch = "/air_administrator_318c_hotel/checkmainisopen";
+export const ChangeSwitch = "/air_administrator_318c_hotel/mainswitch";
 //manager
 export const GetReport = "/manager/get_rpt";

@@ -1,6 +1,6 @@
 import "./style.css";
 import { Button, Select, Switch, Descriptions, Modal } from "antd";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { UserStore } from "../../../store/store";
 import instance from "../../../axios";
 import {
@@ -41,7 +41,7 @@ const Room = observer(() => {
     } = UserStore;
 
     // 更新状态（打开时）
-    const updateStateOn = async () => {
+    const updateStateOn = useCallback(async () => {
         // 到达温度，停止送风
         const res = await instance.post(
             Poll,
@@ -80,7 +80,7 @@ const Room = observer(() => {
                 );
             }
         }
-    };
+    }, [phoneNum, roomId, speed]);
 
     // 更新状态（关闭时）
     const updateStateOff = async () => {
@@ -129,7 +129,7 @@ const Room = observer(() => {
         return () => {
             clearInterval(pollingInterval);
         };
-    }, [UserStore.roomId]);
+    }, [power, updateStateOn]);
     // 切换开关
     const handlePowerOn = async (e) => {
         if (!roomId) {

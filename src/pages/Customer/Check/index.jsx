@@ -113,12 +113,12 @@ const Check = observer((props) => {
             </Form.Item>
 
             <Form.Item
-                label="手机号"
+                label="密码"
                 name="phoneNum"
                 rules={[
                     {
                         required: true,
-                        message: "请输入手机号!",
+                        message: "请输入密码!",
                     },
                 ]}
             >

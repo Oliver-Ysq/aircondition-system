@@ -1,12 +1,13 @@
 import React from "react";
-import { Form, Input, Button, Select } from "antd";
+import { Form, Input, Button, Select, notification } from "antd";
 import instance from "../../../axios";
 import { SetParams } from "../../../axios/interface";
 import Qs from "qs";
 import { AccountStore } from "../../../store/store";
 import { renderResult } from "../../../helper/util";
 import { observer } from "mobx-react";
-const Settings = observer(() => {
+import { withRouter } from "react-router";
+const Settings = observer((props) => {
     const [form] = Form.useForm();
 
     const handlSubmmit = async (values) => {
@@ -26,6 +27,15 @@ const Settings = observer(() => {
             })
         );
         console.log(res);
+        if (res.status === 200) {
+            notification.success({
+                message: "设定成功",
+                description: "跳转至房间操作",
+            });
+            setTimeout(() => {
+                props.history.push("/administrator-get-room-info");
+            }, 500);
+        }
     };
 
     const onSpeedChange = (e) => {
@@ -96,4 +106,4 @@ const Settings = observer(() => {
         renderResult()
     );
 });
-export default Settings;
+export default withRouter(Settings);
