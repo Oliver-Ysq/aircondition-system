@@ -152,7 +152,7 @@ const CheckInfo = observer(() => {
                                 <Descriptions.Item label="结束时间">
                                     {v.end_time && getDate(v.end_time)}
                                 </Descriptions.Item>
-                                <Descriptions.Item label="持续时间号">
+                                <Descriptions.Item label="送风时间">
                                     {v.service_duration}
                                 </Descriptions.Item>
                                 <Descriptions.Item label="调度成功次数">
@@ -162,7 +162,7 @@ const CheckInfo = observer(() => {
                                 <Descriptions.Item label="风速模式">
                                     {v.sp_mode}
                                 </Descriptions.Item>
-                                <Descriptions.Item label="送风时间">
+                                <Descriptions.Item label="持续时间">
                                     {v.duration}
                                 </Descriptions.Item>
                                 <Descriptions.Item label="总消费金额">
