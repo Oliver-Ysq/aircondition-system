@@ -24,6 +24,12 @@ const Airs = observer(() => {
                         v.fields.key = idx;
                         v.fields.roomid = v.pk;
                         v.fields.is_on = String(v.fields.is_on);
+                        v.fields.total_cost = parseFloat(
+                            v.fields.total_cost
+                        ).toFixed(1);
+                        v.fields.curr_temp =
+                            v.fields.curr_temp &&
+                            parseFloat(v.fields.curr_temp).toFixed(1);
                         return v.fields;
                     }),
                     () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { AccountStore } from "../../store/store";
-import { Form, Input, Button, Result } from "antd";
+import { Form, Input, Button, Result, Modal } from "antd";
 import "./style.css";
 import instance from "../../axios";
 import { SysLogin } from "../../axios/interface";
@@ -43,7 +43,7 @@ const Login = observer((props) => {
         ) {
             AccountStore.setLogin(true); // 登陆成功
             setTimeout(() => {
-                props.history.push("/administrator-get-room-info");
+                props.history.push("/administrator-default-settings");
             }, 500);
         } else if (
             res.data.code == 0 &&
@@ -61,6 +61,11 @@ const Login = observer((props) => {
             setTimeout(() => {
                 props.history.push("/hotel-manager-get-daily-report");
             }, 500);
+        } else {
+            Modal.error({
+                title: "登陆失败",
+                content: "error: 请检查账号信息后重新登陆!",
+            });
         }
     };
 

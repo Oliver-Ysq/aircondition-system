@@ -25,6 +25,7 @@ const pageMapping = {
 
 const Main = (props) => {
     const { charactor } = props;
+    console.log(homepageOptions, charactor);
     return (
         <Layout className="site-layout">
             <Content className="site-layout-background">

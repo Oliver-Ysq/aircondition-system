@@ -46,7 +46,7 @@ const Checkin = (props) => {
             } else if (res.data.code == 0) {
                 notification.error({
                     message: "入住失败",
-                    description: res.code.message,
+                    description: "房间已被占用，请选择其他的房间",
                 });
             }
         } catch (err) {

@@ -20,7 +20,7 @@ const App = observer((props) => {
 
     return (
         <>
-            {initCharactor === CHARACTOR_ENUM.UNKNOWN ? (
+            {initCharactor === "null" || initCharactor === null ? (
                 <ChooseCharactor />
             ) : (
                 <Layout className="c-layout">
